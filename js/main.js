@@ -53,3 +53,21 @@ jslist.innerHTML = anastacio;
 jslist.innerHTML += fiona;
 
 jslist.innerHTML += cielo;
+
+
+const form = document.querySelector('.new-form');
+const button = document.querySelector('.js-btn-add');
+
+button.addEventListener("click", (event)=>{
+  form.classList.toggle('collapsed');
+
+});
+
+const btnCancel = document.querySelector('.js-btn-cancel');
+const jsForm = document.querySelector('.js_form');
+
+btnCancel.addEventListener("click", (event)=>{
+  form.classList.add('collapsed');
+  jsForm.reset();
+
+});
