@@ -10,10 +10,11 @@ const anastacio = `<li class="card"> <article>
     />
     <h3 class="card_title">Anastacio</h3>
     <h4 class="card_race">Siamés</h4>
-    <p class="card_description">
+    <p class="card_description kittenDesc1">
         Porte elegante, su patrón de color tan característico y sus ojos
         de un azul intenso, pero su historia se remonta a Asía al menos
         hace 500 años, donde tuvo su origen muy posiblemente.
+        Gato
     </p>
     </article>
     </li>`;
@@ -30,6 +31,7 @@ const fiona = `<li class="card">
   Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
   hasta con pinta de alienígena han llegado a definir a esta raza
   gatuna que se caracteriza por la «ausencia» de pelo.
+  Gato
 </p>
 </li>`;
 
@@ -41,18 +43,19 @@ const cielo = `<li class="card">
 />
 <h3 class="card_title">Cielo</h3>
 <h4 class="card_race">Maine Coon</h4>
-<p class="card_description">
+<p class="card_description kittenDesc3">
   Tienen la cabeza cuadrada y los ojos simétricos, por lo que su
   bella mirada se ha convertido en una de sus señas de identidad.
   Sus ojos son grandes y las orejas resultan largas y en punta.
+  Gato
 </p>
 </li>`;
 
-jslist.innerHTML = anastacio;
+// jslist.innerHTML = anastacio;
 
-jslist.innerHTML += fiona;
+// jslist.innerHTML += fiona;
 
-jslist.innerHTML += cielo;
+// jslist.innerHTML += cielo;
 
 
 const form = document.querySelector('.new-form');
@@ -71,3 +74,40 @@ btnCancel.addEventListener("click", (event)=>{
   jsForm.reset();
 
 });
+
+const input_search_desc = document.querySelector('.js_in_search_desc');
+const searchButton = document.querySelector(".js-search-button");
+
+
+const descrSearchText = input_search_desc.value;
+
+searchButton.addEventListener("click", (event) => {
+  event.preventDefault();
+    if( anastacio.includes(descrSearchText) ) {
+        jslist.innerHTML = anastacio;
+        }
+        
+    if( fiona.includes(descrSearchText) ) {
+          jslist.innerHTML += fiona;
+        }
+        
+    if( cielo.includes(descrSearchText) ) {
+          jslist.innerHTML += cielo;
+        }
+});
+
+// input_search_desc.addEventListener("change", () => {
+//   if( anastacio.includes(descrSearchText) ) {
+//     jslist.innerHTML = anastacio;
+//     }
+    
+//     if( kittenDesc2.includes(descrSearchText) ) {
+//       jslist.innerHTML += fiona;
+//     }
+    
+//     if( kittenDesc3.includes(descrSearchText) ) {
+//       jslist.innerHTML += cielo;
+//     }
+// });
+
+
