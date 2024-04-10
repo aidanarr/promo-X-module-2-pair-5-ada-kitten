@@ -65,24 +65,85 @@ const cielo = `<li class="card">
 </li>`;
 
 
+
+
+
+
+
+
+
 // FORM
 
 const form = document.querySelector('.new-form');
 const button = document.querySelector('.js-btn-add');
 
-button.addEventListener("click", (event)=>{
-  form.classList.toggle('collapsed');
+function showNewCatForm() {
+  form.classList.remove('collapsed');
+}
 
-});
+function hideNewCatForm() {
+  form.classList.add('collapsed');
+}
+
+function handleClickNewCatForm(event) {
+  event.preventDefault();
+  if (form.classList.contains('collapsed')) {
+    showNewCatForm();
+  } else {
+    hideNewCatForm();
+  }
+}
+
+button.addEventListener("click", handleClickNewCatForm);
+
 
 const btnCancel = document.querySelector('.js-btn-cancel');
 const jsForm = document.querySelector('.js_form');
+
 
 btnCancel.addEventListener("click", (event)=>{
   form.classList.add('collapsed');
   jsForm.reset();
 
 });
+
+
+// Añadir nuevo gatito
+
+const buttonNewKitten = document.querySelector('.js_add_new_kitten');
+const urlImage = document.querySelector('.js_url_image');
+const nameKitten = document.querySelector('.js_name');
+const raceKitten = document.querySelector('.js_race');
+const descriptionKitten = document.querySelector('.js_description');
+
+function kittenCard() {
+  const card = `<li class="card">
+    <img
+      class="card_img"
+      src="${valuePhoto}"
+      alt="maine-coon-cat"
+    />
+    <h3 class="card_title">${valueName.toUpperCase()}</h3>
+    <h4 class="card_race">${valueRace}</h4>
+    <p class="card_description">
+      ${valueDescription3}
+    </p>
+    </li>`;
+
+}
+
+function addNewKitten(event) {
+  event.preventDefault();
+  const valuePhoto = urlImage.value;
+  const valueName = nameKitten.value;
+  const valueRace = raceKitten.value;
+  const valueDescription = descriptionKitten.value;
+  jslist.innerHTML = kittenCard();
+}
+
+
+buttonNewKitten.addEventListener('click', addNewKitten);
+
 
 // Barra de búsqueda
 
