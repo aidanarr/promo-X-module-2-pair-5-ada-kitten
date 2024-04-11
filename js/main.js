@@ -116,20 +116,19 @@ const nameKitten = document.querySelector('.js_name');
 const raceKitten = document.querySelector('.js_race');
 const descriptionKitten = document.querySelector('.js_description');
 
-function kittenCard() {
-  const card = `<li class="card">
+function kittenCard(photo, name, race, description) {
+  jslist.innerHTML = `<li class="card">
     <img
       class="card_img"
-      src="${valuePhoto}"
-      alt="maine-coon-cat"
+      src="${photo}"
+      alt=""
     />
-    <h3 class="card_title">${valueName.toUpperCase()}</h3>
-    <h4 class="card_race">${valueRace}</h4>
+    <h3 class="card_title">${name.toUpperCase()}</h3>
+    <h4 class="card_race">${race}</h4>
     <p class="card_description">
-      ${valueDescription3}
+      ${description}
     </p>
     </li>`;
-
 }
 
 function addNewKitten(event) {
@@ -138,36 +137,45 @@ function addNewKitten(event) {
   const valueName = nameKitten.value;
   const valueRace = raceKitten.value;
   const valueDescription = descriptionKitten.value;
-  jslist.innerHTML = kittenCard();
+  kittenCard(valuePhoto, valueName, valueRace, valueDescription);
 }
 
 
 buttonNewKitten.addEventListener('click', addNewKitten);
 
+console.log(addNewKitten);
 
 // Barra de búsqueda
 
 const input_search_desc = document.querySelector('.js_in_search_desc');
+const input_search_race = document.querySelector('.js_in_search_race');
 const searchButton = document.querySelector(".js-search-button");
 
 
 searchButton.addEventListener("click", (event) => {
-  
     const descrSearchText = input_search_desc.value;
+    const raceSearchText = input_search_race.value;
     event.preventDefault();
-
+    jslist.innerHTML = "";
     if( anastacio.includes(descrSearchText) ) {
-        jslist.innerHTML = anastacio;
-        }
+      jslist.innerHTML += anastacio;
+    }
         
     if( fiona.includes(descrSearchText) ) {
-          jslist.innerHTML = fiona;
+          jslist.innerHTML += fiona;
         }
         
     if( cielo.includes(descrSearchText) ) {
-          jslist.innerHTML = cielo;
+          jslist.innerHTML += cielo;
         }
       
+    if (descrSearchText === "") {
+      alert("falta descripción");
+    }
+    
+    if (raceSearchText === "") {
+      alert("falta raza");
+    }
 });
 
 
